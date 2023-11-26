@@ -29,14 +29,14 @@ function Encrypt({text}){
         while(value > 26){
             value = value - 26;
         }
-        console.log(value);
+        // console.log(value);
         return value;
     }
 
     const addNumbers = (instruction) =>{
         let newVale = parseInt(loop_input.toString() + instruction, 10);
         loop_input = newVale;
-        console.log(loop_input);
+        // console.log(loop_input);
     }
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     let ip = 0;
@@ -49,7 +49,7 @@ function Encrypt({text}){
         
         if(instruction == 'a'){ // a for add
             addAccumulator();
-            console.log(accumulator);
+            // console.log(accumulator);
         }else if(instruction == 'm'){ // m for minus
             minusAccumulator();
         }else if(instruction == 'r'){ // r for raise
@@ -60,6 +60,7 @@ function Encrypt({text}){
             input += alphabet[accumulator-1];
         }else if(instruction == 'e'){ // e for empty
             accumulator = 0;
+            loop_input = 0;
         }else if(instruction == 'l'){ // l for loop
             for(let i = 0; i < loop_input; i++){
                 accumulator++;

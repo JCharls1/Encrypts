@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Editor.css'
 import Encrypt from './Encrypt'
+import Decrypt from './Decrypt'
 
 function Editor(){
     const [txt, setTxt] = useState("");
@@ -21,7 +22,10 @@ function Editor(){
                             <textarea onChange={handleChange} value={txt}></textarea>
                         </div>
                     </div>
-                    <pre id="result"><Encrypt text={txt} /></pre>
+                    <pre id="result">
+                        {/* <Encrypt text={txt} />  */}
+                        <Decrypt text={txt} /> 
+                    </pre>
                 </div>
             </div>
         </>
