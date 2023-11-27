@@ -66,6 +66,8 @@ function Encrypt({text}){
                 accumulator++;
             }
             accumulator = overLappingAccumulator(accumulator);
+            console.log("acc "+accumulator);
+            console.log("loop_inpput: " + loop_input);
         }else if(isNumber(Number(instruction))){
             addNumbers(instruction);
         }

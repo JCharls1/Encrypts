@@ -31,6 +31,39 @@ function Decrypt({ text }){
         "z":"aaaaaaaaaaaaaaaaaaaaaaaaaaade"
     };
 
+    const multiplied_crypt = {
+        "b": "arde",
+        "d": "aarde",
+        "f": "aaarde",
+        "g": "aaaarde",
+        "i": "aaaaarde",
+        "k": "aaaaaarde",
+        "m": "aaaaaaarde",
+        "o": "aaaaaaaarde",
+        "q": "aaaaaaaaarde",
+        "s": "aaaaaaaaaarde",
+        "u": "aaaaaaaaaaarde",
+        "w": "aaaaaaaaaaaarde",
+        "y": "aaaaaaaaaaaaarde",
+        
+    }
+
+    const optimized_multiplied_crypt = {
+        "b": "1lrde",
+        "d": "2lrde",
+        "f": "3lrde",
+        "g": "4lrde",
+        "i": "5lrde",
+        "k": "6lrde",
+        "m": "7lrde",
+        "o": "8lrde",
+        "q": "9lrde",
+        "s": "10lrde",
+        "u": "11lrde",
+        "w": "12lrde",
+        "y": "13lrde",
+        
+    }
     const optimized_crypt = {
         "a":"1lde",
         "b":"2lde",
@@ -58,16 +91,45 @@ function Decrypt({ text }){
         "x":"24lde",
         "y":"25lde",
         "z":"26lde"
-    };    
+    };
+    
+    const crypts = {
+        1: crypt,
+        2: optimized_crypt,
+        3: multiplied_crypt,
+        4: optimized_multiplied_crypt
+    };
+
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+    }
+
 
     let output = "";
     let ip = 0;
     while(ip < text.length){
         let character = text[ip];
+        let random = getRndInteger(1, 5);
         for(let i = 0; i < alphabet.length; i++){
+            let random_input = random;
             if(character == alphabet[i]){
-                console.log(optimized_crypt[alphabet[i]]);
-                output += optimized_crypt[alphabet[i]];
+                if(random_input == 1){
+                    output += crypts[1][alphabet[i]];
+                }else if(random_input == 2){
+                    output += crypts[2][alphabet[i]];
+                }else if(random_input == 3){
+                    if(crypts[3][alphabet[i]] == undefined){
+                        output += crypts[2][alphabet[i]];
+                        break;
+                    }
+                    output += crypts[3][alphabet[i]];
+                }else if(random == 4){
+                    if(crypts[4][alphabet[i]] == undefined){
+                        output += crypts[2][alphabet[i]];
+                        break;
+                    }
+                    output += crypts[4][alphabet[i]];
+                }
                 break;
             }
         }
@@ -76,7 +138,6 @@ function Decrypt({ text }){
 
     return(
         <>
-            {/* <h1>{console.log(output)}</h1> */}
             Output: {output}
         </>
     );
