@@ -71,7 +71,7 @@ function Encrypt({text}){
         }else if(isNumber(Number(instruction))){
             addNumbers(instruction);
         }
-        
+        console.log(accumulator + " " + loop_input);
         ip++;
     }
 
